@@ -1,3 +1,5 @@
+// import Country from '../components/views/Country/Country';
+
 /* SELECTORS */
 
 export const getAllTrips = ({trips}) => trips;
@@ -21,18 +23,18 @@ export const getFilteredTrips = ({trips, filters}) => {
 };
 
 export const getTripById = ({trips}, tripId) => {
-  const filtered = trips;
+  const filtered = trips.filter(trip => trip.id == tripId);
 
-  // TODO - filter trips by tripId
+  // DONE - filter trips by tripId
 
   console.log('filtering trips by tripId:', tripId, filtered);
   return filtered.length ? filtered[0] : {error: true};
 };
 
 export const getTripsForCountry = ({trips}, countryCode) => {
-  const filtered = trips;
+  const filtered = trips.filter(trip => trip.country.code == countryCode);
 
-  // TODO - filter trips by countryCode
+  // DONE - filter trips by countryCode
 
   console.log('filtering trips by countryCode:', countryCode, filtered);
   return filtered.length ? filtered : [{error: true}];
