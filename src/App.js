@@ -48,8 +48,8 @@ class App extends React.Component {
             {/* DONE - add more routes for other views */}
             <Route exact path='/countries' component={Countries} />
             <Route exact path='/regions' component={Regions} />
-            <Route exact path='/country' component={Country} />
-            <Route exact path='/trip' component={Trip} />
+            <Route exact path='/country/:id' component={Country} />
+            <Route exact path='/trip/:id' component={Trip} />
             
             <Route exact path='/info' component={Info} />
             <Route path='*' component={NotFound} />
