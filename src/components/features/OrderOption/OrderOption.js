@@ -15,7 +15,7 @@ const optionTypes = {
 
 const OrderOption = ({name, type, ...otherProps}) => {
   const OptionComponent = optionTypes[type];
-  if(!OptionComponent) {
+  if(!OptionComponent){
     return null;
   } else {
     return (
