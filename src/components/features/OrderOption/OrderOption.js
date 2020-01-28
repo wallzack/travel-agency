@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 
 
 const OrderOption = ({name}) => {
-  <div className={styles.component}>
-    <h3 className={styles.title}>{name}</h3>
-  </div>;
+  return (
+    <div className={styles.component}>
+      <h3 className={styles.title}>{name}</h3>
+    </div>
+  );
 };
 
 OrderOption.propTypes = {
