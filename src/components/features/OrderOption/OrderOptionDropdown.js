@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OrderOptionDropdown = ({name}) => {
+const OrderOptionDropdown = () => {
   return(
     <div>
-      {name}
+      OrderOptionDropdown
     </div>
   );
 };

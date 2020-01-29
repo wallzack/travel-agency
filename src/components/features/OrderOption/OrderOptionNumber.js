@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OrderOptionIcons = ({name}) => {
+const OrderOptionIcons = () => {
   return(
     <div>
-      {name}
+      OrderOptionIcons
     </div>
   );
 };

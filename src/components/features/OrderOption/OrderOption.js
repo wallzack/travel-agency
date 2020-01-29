@@ -18,6 +18,7 @@ const OrderOption = ({name, type, ...otherProps}) => {
   if(!OptionComponent){
     return null;
   } else {
+    console.log('OptionComponent: ', OptionComponent);
     return (
       <div className={styles.component}>
         <h3 className={styles.title}>{name}</h3>
