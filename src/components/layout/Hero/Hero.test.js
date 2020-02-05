@@ -22,6 +22,7 @@ describe('Component Hero', () => {
     const renderedTitle = component.find('.title').text();
     expect(renderedTitle).toEqual(expectedTitle);
     expect(component.find('.image').prop('src')).toEqual(expectedImage);
+    console.log(component.debug());
   });
 
   it('renders correct classNames', () => {
@@ -30,5 +31,6 @@ describe('Component Hero', () => {
     expect(component.hasClass('component')).toBe(true);
     expect(component.hasClass('small')).toBe(true);
     expect(component.hasClass('dummy')).toBe(true);
+    // console.log(component.debug());
   });
 });
