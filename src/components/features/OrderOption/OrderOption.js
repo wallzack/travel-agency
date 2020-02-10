@@ -22,7 +22,7 @@ const OrderOption = ({name, type, id, setOrderOption, ...otherProps}) => {
   if(!OptionComponent){
     return null;
   } else {
-    console.log('OptionComponent: ', OptionComponent);
+    // console.log('OptionComponent: ', OptionComponent);
     return (
       <div className={styles.component}>
         <h3 className={styles.title}>{name}</h3>
