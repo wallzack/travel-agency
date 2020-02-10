@@ -21,15 +21,35 @@ describe('Component TripSummary', () => {
     console.log(component.debug());
   });
 
-  // it('renders correct classNames', () => {
-  //   const mockVariants = 'small dummy';
-  //   const component = shallow(<TripSummary titleText='Lorem' imageSrc='image.jpg' variant={mockVariants} />);
-  //   expect(component.hasClass('component')).toBe(true);
-  //   expect(component.hasClass('small')).toBe(true);
-  //   expect(component.hasClass('dummy')).toBe(true);
-  // });
+  it('should render correct name, cost and days', () => {
+    const expectedName = 'Kazimierz';
+    const expectedCost = '200';
+    const expectedDays = 3;
+    const component = shallow(<TripSummary name={expectedName} days={expectedDays} cost={expectedCost} />);
 
-  // it('should throw error without required props', () => {
-  //   expect (() => shallow(<TripSummary />)).toThrow();
-  // });
+    expect(component).toBeTruthy();
+    console.log(component.debug());
+  });
+
+  it('should throw error without required props', () => {
+    expect(() => shallow(<TripSummary />)).toThrow();
+  });
+
+  it('should render tags array correctly', () => {
+    const expectedArray = ['lorem', 'ipsum', 'tralala'];
+    const component = shallow(<TripSummary tags={expectedArray} />);
+
+    expect(component.find('.tags span').at(0).text()).toEqual(expectedArray[0]);
+    expect(component.find('.tags span').at(1).text()).toEqual(expectedArray[1]);
+    expect(component.find('.tags span').at(2).text()).toEqual(expectedArray[2]);
+    console.log(component.debug());
+  });
+
+  it('does not render div if tags array is empty or not given', () => {
+    const expectedTags = [];
+    const component = shallow(<TripSummary tags={expectedTags} />);
+
+    expect(component.find('.tags')).toEqual({});
+    console.log(component.debug());
+  });
 });
