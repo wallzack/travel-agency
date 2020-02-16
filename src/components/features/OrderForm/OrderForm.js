@@ -1,24 +1,24 @@
 import React from 'react';
 import OrderSummary from '../../features/OrderSummary/OrderSummary';
-import {Row, Col} from 'react-flexbox-grid';
+import { Row, Col } from 'react-flexbox-grid';
 import styles from './OrderForm.scss';
 import PropTypes from 'prop-types';
 import OrderOption from '../../features/OrderOption/OrderOption';
 import pricing from '../../../data/pricing.json';
 import settings from '../../../data/settings';
-import {calculateTotal} from '../../../utils/calculateTotal';
-import {formatPrice} from '../../../utils/formatPrice';
+import { calculateTotal } from '../../../utils/calculateTotal';
+import { formatPrice } from '../../../utils/formatPrice';
 import Button from '../../common/Button/Button';
 
-
-const sendOrder = (address, name, options, tripCost) => {
+const sendOrder = (options, tripCost, tripId, tripName, countryCode) => {
   const totalCost = formatPrice(calculateTotal(tripCost, options));
-
+  
   const payload = {
     ...options,
     totalCost,
-    address,
-    name,
+    tripId,
+    tripName,
+    countryCode,
   };
 
   const url = settings.db.url + '/' + settings.db.endpoint.orders;
@@ -40,7 +40,7 @@ const sendOrder = (address, name, options, tripCost) => {
     });
 };
 
-const OrderForm = ({address, name, options, tripCost, setOrderOption}) => {
+const OrderForm = ({options, tripCost, setOrderOption, tripName, tripId, countryCode}) => {
   const isEnabled = options.name.length >= 1 && options.contact.length >= 1;
   return (
     <Row className={styles.component}> 
@@ -51,7 +51,7 @@ const OrderForm = ({address, name, options, tripCost, setOrderOption}) => {
       ))}
       <Col xs={12}>
         <OrderSummary cost={tripCost} options={options}/>
-        <Button disabled={!isEnabled} onClick={() => sendOrder(address, name, options, tripCost)}>Order now!</Button>
+        <Button disabled={!isEnabled} onClick={() => sendOrder(options, tripCost, tripId, tripName, countryCode)}>Order now!</Button>
       </Col>
     </Row>
   );
@@ -61,8 +61,9 @@ OrderForm.propTypes = {
   tripCost: PropTypes.node,
   options: PropTypes.object,
   setOrderOption: PropTypes.func,
-  address: PropTypes.string,
-  name: PropTypes.string,
+  tripId: PropTypes.string,
+  tripName: PropTypes.string,
+  countryCode: PropTypes.any,
 };
 
 export default OrderForm;
