@@ -33,13 +33,13 @@ describe('Component HappyHourAdd', () => {
 
   it('should render correct title and promoDescription', () => {
     const expectedTitle = mockProps.title;
-    const expectedDescription = mockProps.description;
+    const expectedPromoDescription = mockProps.promoDescription;
 
     const component = shallow(<HappyHourAd {...mockProps} />);
 
     expect(component.find(select.title).text()).toEqual(expectedTitle);
-    expect(component.find(select.description).text()).toEqual(
-      expectedDescription
+    expect(component.find(select.promoDescription).text()).toEqual(
+      expectedPromoDescription
     );
   });
 });
