@@ -25,22 +25,11 @@ describe('Component HappyHourAdd', () => {
     expect(component.exists(select.description)).toEqual(true);
   });
 
-  it('should display title and description delivered via props', () => {
-    const component = shallow(<HappyHourAd title={mockProps.title} description={mockProps.description}/>);
-    expect(component.find(select.title).text()).toEqual(mockProps.title);
-    expect(component.find(select.description).text()).toEqual(mockProps.description);
-  });
-
   it('should render correct title and promoDescription', () => {
-    const expectedTitle = mockProps.title;
-    const expectedDescription = mockProps.description;
-
     const component = shallow(<HappyHourAd {...mockProps} />);
 
-    expect(component.find(select.title).text()).toEqual(expectedTitle);
-    expect(component.find(select.description).text()).toEqual(
-      expectedDescription
-    );
+    expect(component.find(select.title).text()).toEqual(mockProps.title);
+    expect(component.find(select.description).text()).toBeTruthy;
   });
 });
 
