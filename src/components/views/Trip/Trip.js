@@ -14,7 +14,11 @@ import OrderForm from '../../features/OrderForm/OrderFormContainer';
 import styles from './Trip.scss';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 
+import { promoPrice } from '../../../utils/promoPrice';
+import { formatPrice } from '../../../utils/formatPrice';
+
 const Trip = ({error, name, image, cost, days, description, country, intro, id}) => {
+  const timeUTC = new Date(new Date().toUTCString().substr(0, 25));
   if(error) return <NotFound />;
   else return (
     <Section>
@@ -33,7 +37,11 @@ const Trip = ({error, name, image, cost, days, description, country, intro, id})
               </div>
               <List variant='light'>
                 <ListItem title={`<strong>Duration:</strong> ${days} days`} icon='calendar-alt' />
-                <ListItem title={`<strong>Price:</strong> from ${cost}`} icon='money-bill-wave' />
+                <ListItem title={timeUTC.getHours() == 12 ? (
+                  `<strong>HAPPY HOUR!</strong> Price from ${formatPrice(promoPrice(cost, 20))} <br><small>Standard price from ${cost}</small>`
+                ) : (
+                  `Price from ${cost}`
+                )} icon='money-bill-wave'/>
               </List>
             </Col>
           </Row>
